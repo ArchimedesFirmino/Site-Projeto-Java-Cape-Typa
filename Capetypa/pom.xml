@@ -14,7 +14,7 @@
 	<name>Capetypa</name>
 	<description>Site como projeto para curso de programação Java.</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
