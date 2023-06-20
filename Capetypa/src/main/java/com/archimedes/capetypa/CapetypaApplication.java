@@ -1,4 +1,4 @@
-package com.archimedes.Capetypa;
+package com.archimedes.capetypa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

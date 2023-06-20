@@ -1,4 +1,4 @@
-package com.archimedes.Capetypa.Usuarios.Model;
+package com.archimedes.capetypa.usuarios;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

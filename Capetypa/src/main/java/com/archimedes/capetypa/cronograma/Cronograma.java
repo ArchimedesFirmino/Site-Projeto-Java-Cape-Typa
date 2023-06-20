@@ -1,13 +1,11 @@
-package com.archimedes.Capetypa.Artigos.Model;
+package com.archimedes.capetypa.cronograma;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 
-public class Artigos {
-
+public class Cronograma {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false)
@@ -24,16 +22,12 @@ public class Artigos {
 	
 	@Column(length = 15, nullable = false)
 	private String status;
-
-	@Column(length = 255)
-	private String thumbnail;
 	
-	@Column(length = 127)
-	private String resume;
-	
-	@Lob
-	@Column(columnDefinition = "TEXT", nullable = false)
+	@Column(length = 255, nullable = false)
 	private String content;
+	
+	@Column(length = 127, nullable = false)
+	private String institute;
 
 	public Long getId() {
 		return id;
@@ -75,28 +69,20 @@ public class Artigos {
 		this.status = status;
 	}
 
-	public String getThumbnail() {
-		return thumbnail;
-	}
-
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
-
-	public String getResume() {
-		return resume;
-	}
-
-	public void setResume(String resume) {
-		this.resume = resume;
-	}
-
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getInstitute() {
+		return institute;
+	}
+
+	public void setInstitute(String institute) {
+		this.institute = institute;
 	}
 
 }

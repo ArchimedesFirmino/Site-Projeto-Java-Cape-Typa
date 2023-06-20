@@ -1,4 +1,4 @@
-package com.archimedes.Capetypa.Formularios.Model;
+package com.archimedes.capetypa.formularios;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

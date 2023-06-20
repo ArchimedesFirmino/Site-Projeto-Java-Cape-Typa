@@ -1,4 +1,4 @@
-package com.archimedes.Capetypa.Comentarios.Model;
+package com.archimedes.capetypa.comentarios;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
