@@ -3,6 +3,7 @@ package com.archimedes.capetypa.comentarios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/comentarios")
-public class ComentariosController {
+public class ComentarioController {
 
 	@Autowired
-	private ComentariosRepository comentariosRepository;
+	private ComentarioRepository comentariosRepository;
 
 	@GetMapping
-	public List<Comentarios> getAll() {
+	public List<Comentario> getAll() {
 
 		// O método "findAll()" do JPA retorna todos os registros em uma lista.
 		return comentariosRepository.findAll();
@@ -37,7 +39,7 @@ public class ComentariosController {
 			ObjectMapper mapper = new ObjectMapper();
 
 			// Obtém o registro pelo Id e armazena no objeto "Artigos".
-			Comentarios comentarios = comentariosRepository.findById(id).get();
+			Comentario comentarios = comentariosRepository.findById(id).get();
 
 			// Retorna "Artigos" convertido para JSON (String → JSON).
 			return mapper.writeValueAsString(comentarios);
@@ -46,14 +48,13 @@ public class ComentariosController {
 		// Se o registro não existe, retorna o JSON.
 		return "{ \"status\" : \"not found\" }";
 	}
-		@PostMapping
-		public Comentarios post(@RequestBody Comentarios comentarios) {
 
-			// O método "save()" de JPA cria um novo registro
-			// e armazena o objeto nele.
-			return comentariosRepository.save(comentarios);
-		}
+	@PostMapping
+	public Comentario post(@RequestBody Comentario comentarios) {
 
+		// O método "save()" de JPA cria um novo registro
+		// e armazena o objeto nele.
+		return comentariosRepository.save(comentarios);
 	}
 
-
+}

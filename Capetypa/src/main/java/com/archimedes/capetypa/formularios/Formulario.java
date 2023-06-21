@@ -1,34 +1,37 @@
 package com.archimedes.capetypa.formularios;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
-public class Formularios {
+@Entity
+public class Formulario {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false)
 	private Long id;
 
-	@Column(length = 127, nullable = false)
+	@Column(length = 127)
 	private String date;
 
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String name;
 	
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String subject;
 	
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String email;
 	
 	@Lob
-	@Column(columnDefinition = "TEXT",length = 255, nullable = false)
+	@Column(columnDefinition = "TEXT")
 	private String message;
 	
-	@Column(length = 15, nullable = false)
+	@Column(length = 15)
 	private String status;
 
 	public Long getId() {

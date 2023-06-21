@@ -1,38 +1,40 @@
 package com.archimedes.capetypa.artigos;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
-public class Artigos {
+@Entity
+public class Artigo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false)
+	@Column
 	private Long id;
 
-	@Column(length = 127, nullable = false)
+	@Column(length = 127)
 	private String date;
 
 	@Column(nullable = false)
 	private Long author;
-	
-	@Column(length = 127, nullable = false)
+
+	@Column(length = 127)
 	private String title;
-	
-	@Column(length = 15, nullable = false)
+
+	@Column(length = 15)
 	private String status;
 
 	@Column(length = 255)
 	private String thumbnail;
-	
+
 	@Column(length = 127)
 	private String resume;
-	
+
 	@Lob
-	@Column(columnDefinition = "TEXT", nullable = false)
+	@Column(columnDefinition = "TEXT")
 	private String content;
 
 	public Long getId() {
