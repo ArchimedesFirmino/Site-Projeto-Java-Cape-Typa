@@ -1,4 +1,4 @@
-package com.archimedes.capetypa.formularios;
+package com.archimedes.capetypa.contatos;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
 @Entity
-public class Formulario {
+public class Contato {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

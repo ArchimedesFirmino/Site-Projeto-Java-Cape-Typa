@@ -1,4 +1,4 @@
-package com.archimedes.capetypa.formularios;
+package com.archimedes.capetypa.contatos;
 
 import java.util.List;
 
@@ -16,33 +16,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/formularios")
-public class FormularioController {
+@RequestMapping("/contatos")
+public class ContatoController {
 
 	@Autowired
-	private FormularioRepository formulariosRepository;
+	private ContatoRepository contatoRepository;
 
 	@GetMapping
-	public List<Formulario> getAll() {
+	public List<Contato> getAll() {
 
 		// O método "findAll()" do JPA retorna todos os registros em uma lista.
-		return formulariosRepository.findAll();
+		return contatoRepository.findAll();
 	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public String getOne(@PathVariable Long id) throws JsonProcessingException {
 
 		// Se o registro com o Id existe.
-		if (formulariosRepository.existsById(id)) {
+		if (contatoRepository.existsById(id)) {
 
 			// ObjectMapper tenta converter um objeto para JSON.
 			ObjectMapper mapper = new ObjectMapper();
 
 			// Obtém o registro pelo Id e armazena no objeto "Artigos".
-			Formulario formularios = formulariosRepository.findById(id).get();
+			Contato contato = contatoRepository.findById(id).get();
 
 			// Retorna "Artigos" convertido para JSON (String → JSON).
-			return mapper.writeValueAsString(formularios);
+			return mapper.writeValueAsString(contato);
 		}
 
 		// Se o registro não existe, retorna o JSON.
@@ -50,11 +50,11 @@ public class FormularioController {
 	}
 
 	@PostMapping
-	public Formulario post(@RequestBody Formulario formularios) {
+	public Contato post(@RequestBody Contato contato) {
 
 		// O método "save()" de JPA cria um novo registro
 		// e armazena o objeto nele.
-		return formulariosRepository.save(formularios);
+		return contatoRepository.save(contato);
 	}
 
 }

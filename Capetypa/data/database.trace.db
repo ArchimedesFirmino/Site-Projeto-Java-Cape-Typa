@@ -2131,3 +2131,15 @@ SELECT * FROM USUARIO AND INSERT INTO BIRTHDAY ("23/07/2000") [42000-214]
 2023-06-20 21:36:41 jdbc[14]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM USUARIO INSERT [*]INTO BIRTHDAY (""23/07/2000"")"; SQL statement:
 SELECT * FROM USUARIO INSERT INTO BIRTHDAY ("23/07/2000") [42000-214]
+2023-06-21 18:25:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (ARTIGO: ""ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."ARTIGO"("ID","AUTHOR","CONTENT","DATE","RESUME","STATUS","THUMBNAIL","TITLE")VALUES(?,?,?,?,?,?,?,?) [22018-214]
+2023-06-21 18:25:31 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'' (ARTIGO: ""ID"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."ARTIGO"("ID","AUTHOR","CONTENT","DATE","RESUME","STATUS","THUMBNAIL","TITLE")VALUES(?,?,?,?,?,?,?,?) [22018-214]
+2023-06-21 18:26:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Archimedes Santos Firmino' (ARTIGO: ""AUTHOR"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."ARTIGO"("ID","AUTHOR","CONTENT","DATE","RESUME","STATUS","THUMBNAIL","TITLE")VALUES(?,?,?,?,?,?,?,?) [22018-214]
+2023-06-21 18:26:23 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Archimedes Santos Firmino' (ARTIGO: ""AUTHOR"" BIGINT NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."ARTIGO"("ID","AUTHOR","CONTENT","DATE","RESUME","STATUS","THUMBNAIL","TITLE")VALUES(?,?,?,?,?,?,?,?) [22018-214]
