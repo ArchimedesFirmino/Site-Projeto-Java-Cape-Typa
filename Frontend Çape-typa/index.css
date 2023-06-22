@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+body{
+    display: flex;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    width: 100%;
+    outline: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+article{
+ background-color: grey;
+}
+.title, .content{
+    margin-left: 13rem;
+}
+.thumbnail{
+    float: left;
+}
+aside{
+    float: right;
+    text-align: center;
+    background-color: red;
+}
