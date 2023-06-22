@@ -1,28 +1,520 @@
+/*
+|*  Folhas de estilo do template do site.
+|*
+*/
+
+/* importam bibliotecas externas  */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 
-body{
-    display: flex;
-    font-size: 16px;
-    font-family: Roboto, sans-serif;
-    width: 100%;
-    outline: none;
+/* RESET - Normalize */
+* {
     box-sizing: border-box;
-    position: relative;
+    outline: none;
 }
 
-article{
- background-color: grey;
+html,
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    /* Criamos uma nova unidade chamada 'rem' → 1rem = 16px */
+    font-size: 16px;
 }
-.title, .content{
-    margin-left: 13rem;
+
+a {
+    color: black;
+    text-decoration: none;
 }
-.thumbnail{
-    float: left;
+
+a:hover {
+    color: white;
 }
-aside{
-    float: right;
+
+/* Define o fundo padrão da página. */
+html,
+body {
+    /* Modificações do plano de fundo. */
+    background-attachment: fixed;
+    background-color: white;
+    background-image: url("/assets/livros-e-cadernos-perto-do-copo-com-lapis.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+/* Limita e centraliza a página usando 'wrap'. */
+
+#wrap {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* Renderiza cabeçalho. */
+#wrap>header {
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: .5rem;
+    border-radius: .75rem;
+    display: flex;
+    align-items: center;
+
+}
+
+#wrap>header a {
+    font-size: 4rem;
+    padding: 0.3rem;
+}
+
+#wrap>header i {
+    display: block;
+    color: #ddd;
+    background-image: linear-gradient(to left, rgb(126, 107, 1), rgb(61, 57, 0), rgb(44, 38, 0));
+    border-radius: 0.5rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    padding-left: .2rem;
+    padding-top: .2rem;
+}
+
+#wrap>header h1 {
+    margin: 0;
+    padding-left: .3rem;
     text-align: center;
-    background-color: red;
+    letter-spacing: 0.12rem;
+    color: rgb(0, 0, 0);
+}
+
+#wrap>header h1 small {
+    display: block;
+    font-weight: normal;
+    font-size: .8rem;
+    letter-spacing: normal;
+}
+
+/* Menu principal. */
+
+#wrap>nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: .35rem;
+    margin: 0 .5rem .5rem .5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#wrap>nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .65rem .75rem;
+    color: #ddd;
+    transition: .2s;
+
+}
+
+#wrap>nav a:first-child {
+    margin-right: auto;
+}
+
+#wrap>nav a:hover {
+    color: black;
+    background-color: white;
+    border-radius: 0.35rem;
+}
+
+#wrap>nav a i {
+    font-size: 2rem;
+    margin-bottom: .4rem;
+}
+
+#wrap>nav a img {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: .4rem;
+    border-radius: 50%;
+}
+
+/* Conteúdo */
+#wrap>main {
+
+    display: flex;
+    margin: 0 .5rem;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+#wrap>main>article {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: .4rem;
+    border: 1px dotted;
+    flex-grow: 1;
+    padding: 0 .4rem;
+
+}
+
+#wrap>main>aside {
+    background-color: rgba(255, 241, 203, 0.7);
+    margin-top: .2rem;
+    border-radius: .4rem;
+    border: 1px dotted;
+    padding: 0 .4rem;
+}
+
+/*********/
+/* aside */
+/*********/
+
+main aside ul {
+    font-size: 95%;
+    padding: 0;
+    padding-left: 1rem;
+}
+
+main aside ul li {
+    margin-top: .25rem;
+}
+
+main aside ul li.article {
+    color: steelblue;
+    cursor: pointer;
+}
+
+main aside ul li.article:hover {
+    color: orangered;
+    text-decoration: underline;
+}
+
+
+/* Rodapé */
+#wrap>footer {
+    background-color: rgb(70, 70, 70);
+    border: 1px solid grey;
+    margin: .5rem;
+    border-radius: .5rem;
+
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: .2rem;
+}
+
+.footer-top div {
+    color: white;
+    align-items: center;
+}
+
+.footer-top a {
+    color: darkgray;
+    font-size: 1.5rem;
+    padding: .25rem;
+    transition: 0.2s;
+    border-radius: 0.5rem;
+}
+
+.footer-top a:hover {
+    background-color: rgba(0, 0, 0, 0.377);
+    color: white;
+
+}
+
+.footer-bottom {
+    display: flex;
+    color: #ddd;
+    justify-content: space-around;
+
+}
+
+.footer-bottom ul {
+    list-style: none;
+    line-height: 1.7;
+    padding: 0;
+}
+
+.footer-bottom li.fb:hover {
+    background-color: #4267B2;
+    color: white;
+    transition: 0.2s;
+    border-radius: .4rem;
+}
+
+.footer-bottom a {
+    padding-left: .25rem;
+}
+
+.footer-bottom li.tw:hover {
+    background-color: #1DA1F2;
+    color: white;
+    transition: 0.2s;
+    border-radius: 0.4rem;
+}
+
+.footer-bottom li.git:hover {
+    background-color: #6e5494;
+    color: white;
+    transition: 0.2s;
+    border-radius: 0.4rem;
+}
+
+/*********/
+/* popup */
+/*********/
+
+#popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 100;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-body {
+    margin: auto;
+    padding: .5rem .5rem .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .3rem;
+}
+
+.popup-close {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
+/***************/
+/* Formulários */
+/***************/
+
+form * {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+form label {
+    display: block;
+    padding: 0 0 .25rem .25rem;
+}
+
+form input:not(input[type=radio]),
+form textarea,
+form button {
+    border-radius: .3rem;
+}
+
+form input:not(input[type=radio]),
+form textarea {
+    padding: .5rem;
+    width: 100%;
+    border: 1px solid grey;
+    display: block;
+}
+
+form textarea {
+    height: 7rem;
+    resize: vertical;
+}
+
+form button {
+    border: none;
+    background-image: linear-gradient(rgb(120, 174, 219), rgb(36, 89, 132));
+    color: white;
+    padding: .5rem 1rem;
+    margin-top: .25rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-image: linear-gradient(rgb(255, 125, 78), rgb(177, 47, 0));
+}
+
+form button:disabled {
+    background-image: linear-gradient(rgb(172, 172, 172), rgb(76, 76, 76));
+    pointer-events: none;
+}
+
+/************************/
+/* Mensagens de cookies */
+/************************/
+
+#aboutCookies {
+    display: none;
+}
+
+.cookie-modal {
+    position: fixed;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .5);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.cookie-body {
+    display: table;
+    background-color: #ddd;
+    padding: .5rem;
+    border-radius: .3rem;
+    margin: auto;
+}
+
+.cookie-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-top: .5rem;
+}
+
+.cookie-buttons button {
+    font-size: 90%;
+    margin: .25rem;
+}
+
+/**************************/
+/* Lista de colaboradores */
+/**************************/
+
+#usersGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.users-grid-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 150px;
+    background-color: rgb(189, 189, 189);
+    margin: 0 .25rem 1rem .25rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.users-grid-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: .3rem .3rem 0 0;
+}
+
+.users-grid-item h4 {
+    margin: 0;
+    padding: .25rem .5rem 0 .5rem;
+}
+
+.users-grid-item small {
+    display: block;
+    font-size: 65%;
+    padding: 0 .5rem .5rem .5rem;
+    flex-grow: 1;
+}
+
+.users-grid-item ul {
+    margin: 0;
+    padding: .5rem .5rem .5rem 1.5rem;
+    font-size: 75%;
+}
+
+/* Em larguras menores (mobile friendly). */
+@media screen and (min-width: 480px) {
+
+    /* Menu Principal adequado para celular a partir de 480px de largura. */
+    #wrap>nav {
+        justify-content: space-around;
+    }
+
+    #wrap>nav a {
+        flex-direction: row;
+    }
+
+    #wrap>nav a:first-child {
+        margin-right: 0;
+    }
+
+    #wrap>nav a i {
+        font-size: 1.5rem;
+        margin-bottom: 0.3rem;
+        margin-right: 0.6rem;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Mudança do Layout da página para Main e Aside a partir de 768 pixels (desktop).*/
+    #wrap>main {
+        flex-direction: row;
+    }
+
+    #wrap>main>aside {
+        margin-top: 0;
+        border: 1px dotted;
+        margin-left: 0.5rem;
+        min-width: 220px;
+        max-width: 220px;
+    }
+
+
+}
+
+/* Mudanças na barra de atalhos na lateral direita. */
+#gadgets {
+    background-color: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    z-index: 100px;
+    right: 0;
+    top: 200px;
+    border-radius: .5rem 0 0 .5rem;
+}
+
+#gadgets ul {
+    list-style: none;
+
+
+}
+
+#gadgets a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+#gadgets li.fb i:hover {
+    background-color: #4267B2;
+    color: white;
+    transition: 0.2s;
+    border-radius: .4rem;
+}
+
+#gadgets li.tw i:hover {
+    background-color: #1DA1F2;
+    color: white;
+    transition: 0.2s;
+    border-radius: 0.4rem;
+}
+
+#gadgets li.git i:hover {
+    background-color: #6e5494;
+    color: white;
+    transition: 0.2s;
+    border-radius: 0.4rem;
 }

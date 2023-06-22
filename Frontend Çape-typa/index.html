@@ -1,32 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site para apresentação dos conceitos de front-end, API REST e back-end.">
+    <meta name="author" description="Archimedes Santos Firmino &lt;archimedessfirmino@gmail.com&gt;">
+    <meta name="keywords" description="JavaScript, HTML5, CSS3, semântica, mobile-first, responsividade, API, Java">
     <link rel="stylesheet" href="index.css">
-    <title>Document</title>
+    <!-- Carrega o CSS específico de cada página. -->
+    <link rel="stylesheet" href="" id="pageCSS">
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title>Çape-Typa</title>
 </head>
 
 <body>
+    <!-- WRAP -->
+    <div id="wrap">
 
-    <article id="article">
-        <p id="thumbnail" class="thumbnail"></p>
-        <h2 id="title" class="title"></h2>
-        <p id="content" class="content"></p>
-    </article>
+        <!-- Cabeçalho -->
+        <header>
+            <a href="home">
+                <a href="home" class="logotipo"><img src="assets/logo-removebg-preview.png" alt=""></a>
+            </a>
+            <h1 id="h1">
+                Centro Cultural Çape-Typa
+            </h1>
+        </header>
 
-    <aside>
-        <p id="profilePic"></p>
-        <h3 id="author" class="author"></h3>
-        <p id="description" class="description"></p>
-        <p id="date" class="date"></p>
-        <p id="email" class="email"></p>
-    </aside>
+        <!-- Menu -->
+        <nav>
+            <a href="/"><i class="fa-solid fa-house fa-fw"></i>
+                <span>Início</span>
+            </a>
+
+            <a href="cronograma"><i class="fa-solid fa-timeline"></i>
+                <span>Cronograma</span>
+            </a>
+            <a href="contatos"><i class="fa-solid fa-headset fa-fw"></i>
+                <span>Contatos</span>
+            </a>
+
+            <a href="sobre"><i class="fa-solid fa-info"></i>
+                <span>Sobre</span>
+            </a>
+            <a href="login" id="navUser"><i class="fa-solid fa-right-to-bracket"></i>
+                <span>Login</span>
+            </a>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main>
+
+        </main>
+
+        <!-- Rodapé-->
+        <footer>
+            <!-- Primeira linha -->
+            <div class="footer-top">
+                <a href="/">
+                    <i class="fa-solid fa-house fa-fw"></i>
+                </a>
+                <div>&copy; 2023 Centro Cultural Çape-Typa</div>
+                <a href=top>
+                    <i class="fa-solid fa-up-long"></i>
+                </a>
+            </div>
+
+            <!-- Segunda linha -->
+            <div class="footer-bottom">
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="index.js"></script>
+                <div>
+                    <h4>Redes Sociais:</h4>
+                    <ul>
+                        <li class="fb">
+                            <a href="https://www.facebook.com/profile.php?id=100071569363808" target="_blank"><i
+                                    class="fa-brands fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                        </li>
+                        <li class="tw">
+                            <a href="https://www.twitter.com/FrontEnd" target="_blank"><i
+                                    class="fa-brands fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                        </li>
+                        <li class="git">
+                            <a href="https://www.github.com/FrontEnd" target="_blank"><i
+                                    class="fa-brands fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
+
+                <div>
+                    <h4>Links rápidos:</h4>
+                    <ul>
+                        <li>
+                            <a href="sobre">
+                                <i class="fa-solid fa-file-code fa-fw"></i>
+                                <span>Sobre o site</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sobre">
+                                <i class="fa-solid fa-laptop-code fa-fw"></i>
+                                <span>Quem somos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="sobre">
+                                <i class="fa-solid fa-user-lock fa-fw"></i>
+                                <span>Privacidade</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </footer>
+
+        <hr class="nbsp">
+
+       
+    </div>
+    <!-- Fim do WRAP -->
+
+    <div id="aboutCookies">
+        <div class="cookie-modal">
+            <div class="cookie-body">
+                <div class="cookie-content">Nosso site usa
+                    <a href="https://pt.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)" target="_blank">
+                        <strong>Cookies</strong>
+                    </a> para melhorar sua experiência de navegação.
+                </div>
+                <form class="cookie-buttons">
+                    <button type="button" id="policies">Políticas de Privacidade</button>
+                    <button type="button" id="accept">Aceito todos os cookies</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Carga do JavaScript -->
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script defer src="fb.js"></script>
+    <script defer src="index.js"></script>
+
+
+
 </body>
 
 </html>
