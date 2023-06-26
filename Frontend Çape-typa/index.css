@@ -76,21 +76,17 @@ body {
     padding: 0.3rem;
 }
 
-#wrap>header i {
-    display: block;
-    color: #ddd;
-    background-image: linear-gradient(to left, rgb(126, 107, 1), rgb(61, 57, 0), rgb(44, 38, 0));
-    border-radius: 0.5rem;
-    width: 4.5rem;
-    height: 4.5rem;
-    padding-left: .2rem;
-    padding-top: .2rem;
+#wrap>header img {
+    max-width: 200px;
+    max-height: 200px;
+    height: auto;
+    width: auto;
 }
 
 #wrap>header h1 {
     margin: 0;
     padding-left: .3rem;
-    text-align: center;
+    text-align: right;
     letter-spacing: 0.12rem;
     color: rgb(0, 0, 0);
 }
@@ -256,15 +252,15 @@ main aside ul li.article:hover {
     padding-left: .25rem;
 }
 
-.footer-bottom li.tw:hover {
-    background-color: #1DA1F2;
+.footer-bottom li.ig:hover {
+    background-color: #E1306C;
     color: white;
     transition: 0.2s;
     border-radius: 0.4rem;
 }
 
-.footer-bottom li.git:hover {
-    background-color: #6e5494;
+.footer-bottom li.wpp:hover {
+    background-color: #25D366;
     color: white;
     transition: 0.2s;
     border-radius: 0.4rem;
