@@ -132,7 +132,7 @@ function myApp() {
 
 // Faz login do usuário usando o Firebase Authentication
 function fbLogin() {
-    firebase.auth().signInWithRedirect (provider)
+    firebase.auth().signInWithRedirect(provider)
         .then((user) => {
             popUp({ type: 'success', text: `Olá ${user.user.displayName}!` })
             loadpage(location.pathname.split('/')[2])
@@ -181,12 +181,12 @@ function routerLink() {
         href.substring(0, 7) == 'http://' ||
         href.substring(0, 8) == 'https://' ||
         href.substring(0, 4) == 'tel:' ||
-        href.substring(0, 7) == 'mailto:' 
+        href.substring(0, 7) == 'mailto:'
     )
         // Devolve o controle para o HTML.
         return true
 
-    if ( href.substring(0, 1) == '#') {window.scrollTo(0, 0)}
+    if (href.substring(0, 1) == '#') { window.scrollTo(0, 0) }
     /**
      * Se clicou no link para 'login', executa a função de login.
      */
@@ -250,21 +250,21 @@ function loadpage(page, updateURL = true) {
      *  • https://www.w3schools.com/js/js_string_templates.asp
      */
     const path = {
-        html: `${page}/index.html`,
-        css: `${page}/index.css`,
-        js: `${page}/index.js`
+        html: `paginas/${page}/index.html`,
+        css: `paginas/${page}/index.css`,
+        js: `paginas/${page}/index.js`
     }
 
     /**
-     * jQuery → Faz a requisição (request) do componente HTML da página, a ser 
-     * inserido no SPA.
-     * 
-     * OBS: carregamos o HTML na memória primeiro, para ter certeza que ele 
-     * existe e não vai dar erro 404.
-     * 
-     * Referências:
-     *  • https://www.w3schools.com/jquery/ajax_get.asp
-     **/
+ * jQuery → Faz a requisição (request) do componente HTML da página, a ser 
+ * inserido no SPA.
+ * 
+ * OBS: carregamos o HTML na memória primeiro, para ter certeza que ele 
+ * existe e não vai dar erro 404.
+ * 
+ * Referências:
+ *  • https://www.w3schools.com/jquery/ajax_get.asp
+ **/
     $.get(path.html)
 
         /**

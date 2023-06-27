@@ -18,11 +18,7 @@ function myHome() {
 
     var articleList = '';
 
-    $.get(app.apiBaseURL + 'artigos', {
-        _sort: 'date',
-        _order: 'desc',
-        status: 'on'
-    })
+    $.get(app.apiBaseURL + 'artigos')
         .done((data) => {
             data.forEach((art) => {
                 articleList += `
@@ -50,12 +46,7 @@ function getMostViewed(limit) {
 
     var htmlOut = ''
 
-    $.get(app.apiBaseURL + 'artigos', {
-        status: 'on',
-        _sort: 'views',
-        _order: 'desc',
-        _limit: limit || 5
-    })
+    $.get(app.apiBaseURL + 'artigos')
         .done((data) => {
             if (data.length > 0) {
                 htmlOut = '<ul>'
@@ -79,17 +70,12 @@ function getLastComments(limit) {
 
     var htmlOut = ''
 
-    $.get(app.apiBaseURL + 'comentarios', {
-        status: 'on',
-        _sort: 'date',
-        _order: 'desc',
-        _limit: limit || 5
-    })
+    $.get(app.apiBaseURL + 'comentarios')
         .done((data) => {
             if (data.length > 0) {
                 htmlOut = '<ul>'
                 data.forEach((item) => {
-                    htmlOut += `<li class="article" data-id="${item.article}">${item.content.truncate(45)}</li>`
+                    htmlOut += `<li class="article" data-id="${item.article}">${item.comment.truncate(45)}</li>`
                 })
                 htmlOut += '</ul>'
             } else {
