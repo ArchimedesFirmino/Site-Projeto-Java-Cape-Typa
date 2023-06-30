@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 
 @Entity
 public class Artigo {
@@ -32,6 +33,9 @@ public class Artigo {
 
 	@Column(length = 127)
 	private String resume;
+
+	@Column
+	private Long views;
 
 	@Lob
 	@Column(columnDefinition = "TEXT")
@@ -99,6 +103,14 @@ public class Artigo {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Long getViews() {
+		return views;
+	}
+
+	public void setViews(Long views) {
+		this.views = views;
 	}
 
 }

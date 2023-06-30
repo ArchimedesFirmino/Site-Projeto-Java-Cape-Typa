@@ -26,6 +26,11 @@ public class ArtigoController {
 		// O método "findAll()" do JPA retorna todos os registros em uma lista.
 		return artigosRepository.findAll();
 	}
+	
+	@GetMapping(path = "/views/{limit}")
+	public List<Artigo> findMostViewedArticles(@PathVariable int limit){
+		return artigosRepository.findMostViewedArticles(limit);
+	}
 
 	@GetMapping(path = "/{id}", produces = "application/json")
 	public String getOne(@PathVariable Long id) throws JsonProcessingException {
