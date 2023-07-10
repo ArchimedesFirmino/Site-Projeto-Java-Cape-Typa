@@ -5,38 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "social")
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(length = 127)
+	private String uid;
 	private String name;
-
-	@Column(length = 255)
-	private String description;
-
-	@Column(length = 127)
-	private String birthday;
-
-	@Column(length = 255)
-	private String email;
-
-	@Column(length = 63)
-	private String password;
-
-	@Column(length = 255)
-	private String img;
-
-	@Column(length = 15)
+	private String link;
+	@Column(length = 3)
 	private String status;
-
-	@Column(length = 15)
-	private String type;
 
 	public Long getId() {
 		return id;
@@ -44,6 +26,14 @@ public class Usuario {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getUid() {
+		return uid;
+	}
+
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 	public String getName() {
@@ -54,44 +44,12 @@ public class Usuario {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getLink() {
+		return link;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public String getStatus() {
@@ -100,14 +58,6 @@ public class Usuario {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 }

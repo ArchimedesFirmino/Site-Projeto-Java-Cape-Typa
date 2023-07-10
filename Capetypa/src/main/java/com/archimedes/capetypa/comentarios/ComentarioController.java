@@ -9,52 +9,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/comentarios")
+@RequestMapping("/comments")
 public class ComentarioController {
 
 	@Autowired
-	private ComentarioRepository comentariosRepository;
+	private ComentarioRepository repository;
 
-	@GetMapping
-	public List<Comentario> getAll() {
-
-		// O método "findAll()" do JPA retorna todos os registros em uma lista.
-		return comentariosRepository.findAll();
+	@GetMapping(path = "/last/{limit}")
+	public List<Comentario> getLast(@PathVariable int limit) {
+		return repository.findLastComments(limit);
 	}
 
-	@GetMapping(path = "/{id}", produces = "application/json")
-	public String getOne(@PathVariable Long id) throws JsonProcessingException {
+	@GetMapping(path = "/{articleId}")
+	public List<Comentario> getAll(@PathVariable Long articleId) {
+		return repository.findAllCommentByArticle(articleId);
+	}
 
-		// Se o registro com o Id existe.
-		if (comentariosRepository.existsById(id)) {
-
-			// ObjectMapper tenta converter um objeto para JSON.
-			ObjectMapper mapper = new ObjectMapper();
-
-			// Obtém o registro pelo Id e armazena no objeto "Artigos".
-			Comentario comentarios = comentariosRepository.findById(id).get();
-
-			// Retorna "Artigos" convertido para JSON (String → JSON).
-			return mapper.writeValueAsString(comentarios);
-		}
-
-		// Se o registro não existe, retorna o JSON.
-		return "{ \"status\" : \"not found\" }";
+	// Busca por um comentário específico.
+	// Exemplo:
+	// GET → http://domínio.api/comments/find?uid=Q1W2E3R4T5Y6U7&art=2&txt=Comentário do usuário
+	// Busca por comentários que contenham exatamente
+	// Id do usuário = "Q1W2E3R4T5Y6U7" E
+	// Id do artigo = 2 E
+	// Texto do comentário = "Comentário do usuário"
+	// Serve para evitar que um mesmo comentário seja enviado de forma repetida.
+	@GetMapping(path = "/find")
+	public List<Comentario> alreadyExists(@RequestParam("uid") String uid, @RequestParam("art") Long art,
+			@RequestParam("txt") String txt) {
+		return repository.findCommentsByAuthorArticleAndContent(uid, art, txt);
 	}
 
 	@PostMapping
-	public Comentario post(@RequestBody Comentario comentarios) {
-
-		// O método "save()" de JPA cria um novo registro
-		// e armazena o objeto nele.
-		return comentariosRepository.save(comentarios);
+	public Comentario postComment(@RequestBody Comentario comment) {
+		return repository.save(comment);
 	}
-
 }
