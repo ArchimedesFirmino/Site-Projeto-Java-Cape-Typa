@@ -31,6 +31,9 @@ public class Cronograma {
 	
 	@Column(length = 127)
 	private String institute;
+	
+	@Column
+	private Long views;
 
 	public Long getId() {
 		return id;
@@ -86,6 +89,14 @@ public class Cronograma {
 
 	public void setInstitute(String institute) {
 		this.institute = institute;
+	}
+
+	public Long getViews() {
+		return views;
+	}
+
+	public void setViews(Long views) {
+		this.views = views;
 	}
 
 }

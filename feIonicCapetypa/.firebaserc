@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "frontendeiros-archimedes": {
+      "hosting": {
+        "app": [
+          "frontendeiros-archimedes"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "frontendeiros-archimedes"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "feIonicCapetypa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

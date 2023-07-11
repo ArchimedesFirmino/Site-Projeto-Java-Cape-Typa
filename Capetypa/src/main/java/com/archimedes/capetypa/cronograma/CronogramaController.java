@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/cronograma")
+@RequestMapping("/calendars")
 public class CronogramaController {
 
 	@Autowired
