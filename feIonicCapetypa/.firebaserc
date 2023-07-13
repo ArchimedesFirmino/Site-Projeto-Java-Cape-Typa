@@ -6,9 +6,16 @@
           "frontendeiros-archimedes"
         ]
       }
+    },
+    "cape-typa": {
+      "hosting": {
+        "app": [
+          "cape-typa"
+        ]
+      }
     }
   },
   "projects": {
-    "default": "frontendeiros-archimedes"
+    "default": "cape-typa"
   }
 }

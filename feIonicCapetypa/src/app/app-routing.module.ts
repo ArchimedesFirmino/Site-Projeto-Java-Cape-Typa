@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { redirectUnauthorizedTo, redirectLoggedInTo, AuthGuard } from '@angular/fire/auth-guard';
 
+const toLogin = () => redirectUnauthorizedTo(['/login']);
+const toHome = () => redirectLoggedInTo(['/home']);
 const routes: Routes = [
   {
     path: '',
@@ -9,49 +13,72 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    title: `${environment.siteName} - Página Inicial`,
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'about',
-    loadChildren: () => import('./pages/about/about.module').then( m => m.AboutPageModule)
+    title: `${environment.siteName} - Sobre Nós`,
+    loadChildren: () => import('./pages/about/about.module').then(m => m.AboutPageModule)
   },
   {
     path: 'view',
-    loadChildren: () => import('./pages/view/view.module').then( m => m.ViewPageModule)
+    loadChildren: () => import('./pages/view/view.module').then(m => m.ViewPageModule)
   },
   {
     path: 'calendars',
-    loadChildren: () => import('./pages/calendars/calendars.module').then( m => m.CalendarsPageModule)
+    title: `${environment.siteName} - Calendários`,
+    loadChildren: () => import('./pages/calendars/calendars.module').then(m => m.CalendarsPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./users/login/login.module').then( m => m.LoginPageModule)
+    title: `${environment.siteName} - Login/ Entrar`,
+    loadChildren: () => import('./users/login/login.module').then(m => m.LoginPageModule),
+    canActivate: [AuthGuard],
+    data: { authGuarPipe: toHome}
   },
   {
     path: 'logout',
-    loadChildren: () => import('./users/logout/logout.module').then( m => m.LogoutPageModule)
+    title: `${environment.siteName} - Logout/ Sair`,
+    loadChildren: () => import('./users/logout/logout.module').then(m => m.LogoutPageModule)
   },
   {
     path: 'profile',
-    loadChildren: () => import('./users/profile/profile.module').then( m => m.ProfilePageModule)
+    title: `${environment.siteName} - Perfil do Usuário`,
+    loadChildren: () => import('./users/profile/profile.module').then(m => m.ProfilePageModule),
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: toLogin}
   },
   {
     path: 'contacts',
-    loadChildren: () => import('./pages/contacts/contacts.module').then( m => m.ContactsPageModule)
+    title: `${environment.siteName} - Faça Contato`,
+    loadChildren: () => import('./pages/contacts/contacts.module').then(m => m.ContactsPageModule)
   },
   {
     path: 'e404',
-    loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
+    title: `${environment.siteName} - Erro 404`,
+    loadChildren: () => import('./pages/e404/e404.module').then(m => m.E404PageModule)
+  }, {
+    path: 'search',
+    title: `${environment.siteName} - Resultado`,
+    loadChildren: () => import('./pages/search/search.module').then(m => m.SearchPageModule)
   },
   {
+    path: 'policies',
+    title: `${environment.siteName} - Sua Privacidade`,
+    loadChildren: () => import('./pages/policies/policies.module').then(m => m.PoliciesPageModule)
+  }, {
     path: '**',
     redirectTo: 'e404',
     pathMatch: 'full'
-  }
+  },
+
+
+
 
 ];
 
@@ -61,4 +88,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

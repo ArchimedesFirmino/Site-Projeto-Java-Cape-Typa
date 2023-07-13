@@ -4,17 +4,17 @@
 
 export const environment = {
   firebase: {
-    projectId: 'frontendeiros-archimedes',
-    appId: '1:482807980306:web:0401641f775699d85493cb',
-    databaseURL: 'https://frontendeiros-archimedes-default-rtdb.firebaseio.com',
-    storageBucket: 'frontendeiros-archimedes.appspot.com',
-    apiKey: 'AIzaSyBHQJBs0pe_Yc17MBSqAGI5OUbigAGGHGs',
-    authDomain: 'frontendeiros-archimedes.firebaseapp.com',
-    messagingSenderId: '482807980306',
+    projectId: 'cape-typa',
+    appId: '1:119190985175:web:6cc29338653cefffd75392',
+    storageBucket: 'cape-typa.appspot.com',
+    apiKey: 'AIzaSyDiHQ3tRRe4hj84LtVyOgYSRvAP1iTsbT0',
+    authDomain: 'cape-typa.firebaseapp.com',
+    messagingSenderId: '119190985175',
   },
   production: false,
   siteName: 'Çape-Typa',
-  apiBaseURL: 'http://localhost:8080'
+  apiBaseURL: 'http://localhost:8080',
+  authMethod: 'redirect'
 };
 
 /*
