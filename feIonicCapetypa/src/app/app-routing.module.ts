@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -38,7 +38,21 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./users/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'contacts',
+    loadChildren: () => import('./pages/contacts/contacts.module').then( m => m.ContactsPageModule)
+  },
+  {
+    path: 'e404',
+    loadChildren: () => import('./pages/e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
   }
+
 ];
 
 @NgModule({

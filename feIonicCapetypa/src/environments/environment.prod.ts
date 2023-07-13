@@ -8,5 +8,7 @@ export const environment = {
     authDomain: 'frontendeiros-archimedes.firebaseapp.com',
     messagingSenderId: '482807980306',
   },
-  production: true
+  production: true,
+  siteName: 'Çape-Typa',
+  apiBaseURL: 'http://localhost:8080'
 };
