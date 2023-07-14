@@ -13,33 +13,27 @@ export class CalendarsPage implements OnInit {
   calendars: any;
   user: any;
   env = environment;
-  authorArray: any;
-  contaAuthorArray = 0;
-
-  constructor(private http: HttpClient) {
-    this.getAllCalendars();
-
-  }
-
-  ngOnInit(): void { }
+  calendarsAut: any;
 
 
-  getAllCalendars() {
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
     this.http.get(`${this.env.apiBaseURL}/calendars`)
       .subscribe((response) => {
         this.calendars = response;
+        this.calendarsAut = this.calendars.ca_author;
+        this.getCalendarsAuthor();
         console.log(this.calendars)
-        this.contaAuthorArray++;
-       this. authorArray[this.contaAuthorArray] = { authorId: this.calendars.author }
       })
 
   }
   getCalendarsAuthor() {
     //Pega os usuarios para apresentar na View
-    this.http.get(environment.apiBaseURL + `/users/${this.calendars.author}`).subscribe(
+    this.http.get(`${this.env.apiBaseURL}/users/${this.calendarsAut.us_id}`).subscribe(
       (responseUser) => {
-        console.log(responseUser)
         this.user = responseUser; // Atribua os dados ao array de artigos
+        console.log(this.user);
       },
       (error) => {
         console.error(error);
@@ -48,3 +42,10 @@ export class CalendarsPage implements OnInit {
   }
 
 }
+
+
+
+
+
+
+

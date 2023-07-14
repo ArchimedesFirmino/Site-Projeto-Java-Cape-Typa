@@ -26,7 +26,6 @@ export class HomePage implements OnInit {
   getAllArticles() {
     this.http.get(`${this.env.apiBaseURL}/articles`)
       .subscribe((response) => {
-
         this.articles = response;
         console.log(response)
       },

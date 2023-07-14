@@ -17,11 +17,11 @@
         <ion-item *ngFor="let calendar of calendars">
           <ion-label>
 
-            <h3>{{ calendar.title }}</h3>
-            <p>{{ calendar.institute }}</p>
-            <p>{{ calendar.content }}</p>
-
-            <span style="float: right;">Feito por user.name </span>
+            <h3>{{ calendar.ca_title }}</h3>
+            <p>{{ calendar.ca_institute }}</p>
+            <p>{{ calendar.ca_content }}</p>
+            
+            <span style="float: right;" *ngIf="user">Feito por {{ user.us_name }} </span>
           </ion-label>
         </ion-item>
 

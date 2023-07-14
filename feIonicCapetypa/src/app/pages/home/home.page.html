@@ -15,11 +15,11 @@
       <ion-list>
         <!-- Loop assíncrono para obter cada item da coleção. -->
         <ion-item *ngFor="let article of articles">
-          <ion-img src="{{ article.thumbnail }}" class="art-thumbail"></ion-img>
+          <ion-img src="{{ article.ar_thumbnail }}" class="art-thumbail"></ion-img>
           <ion-label>
 
-            <h3><a routerLink="/view/{{ article.id }}">{{ article.title }}</a></h3>
-            <p>{{ article.resume }}</p>
+            <h3><a routerLink="/view/{{ article.ar_id }}">{{ article.ar_title }}</a></h3>
+            <p>{{ article.ar_resume }}</p>
           </ion-label>
         </ion-item>
 
@@ -31,8 +31,8 @@
         <h3>+ Visitados</h3>
         <ul>
           <li *ngFor="let articleView of articlesView">
-            <a routerLink="/view/{{articleView.id}}">
-              {{articleView.title}}
+            <a routerLink="/view/{{articleView.ar_id}}">
+              {{articleView.ar_title}}
             </a>
           </li>
         </ul>

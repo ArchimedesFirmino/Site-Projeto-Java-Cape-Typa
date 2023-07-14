@@ -15,16 +15,17 @@
 
 <ion-content class="ion-padding">
   <div *ngIf="article" class="ion-text-start">
-    <h2 alt="titulo"><strong>{{article.title}}</strong></h2>
-    <small [innerHTML]="article.resume"></small>
-    <div [innerHTML]="article.content"></div>
+    <ion-img src=" {{ article.ar_thumbnail }}"></ion-img>
+    <h2 alt="titulo"><strong>{{article.ar_title}}</strong></h2>
+    <small [innerHTML]="article.ar_resume"></small>
+    <div [innerHTML]="article.ar_content"></div>
 
 
   </div>
   <div *ngIf="user" class="userAside">
-      <ion-img src="{{ user.img }}"></ion-img>
-      <h3 alt="nome do autor"> {{ user.name }}</h3>
-      <h4>{{ user.description }}</h4>
+      <ion-img src="{{ user.us_photo }}"></ion-img>
+      <h3 alt="nome do autor"> {{ user.us_name }}</h3>
+      <h4>{{ user.us_description }}</h4>
 
 
   </div>

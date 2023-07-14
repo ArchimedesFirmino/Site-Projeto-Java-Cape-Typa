@@ -32,7 +32,7 @@ public class CalendarioController {
 		return CalendarioRepository.findCalendarById(id);
 	}
 
-	@GetMapping(path = "/views/{limit}")
+	@GetMapping(path = "/ca_views/{limit}")
 	public List<Calendario> getByViews(@PathVariable int limit) {
 		return CalendarioRepository.findMostViewedCalendars(limit);
 	}
@@ -49,7 +49,7 @@ public class CalendarioController {
 	// {art} → Id do Calendario que será excluído da listagem
 	// {lim} → Quantos Calendarios serão obtidos
 	// Exemplo de rota: http://domain.api/articles/author?uid=1&art=2&lim=5
-	@GetMapping(path = "/author")
+	@GetMapping(path = "/ca_author")
 	public List<Calendario> getByAuthor(@RequestParam("uid") Long uid, @RequestParam("art") Long articleId,
 			@RequestParam("lim") int limit) {
 		return CalendarioRepository.findAllByAuthor(uid, articleId, limit);

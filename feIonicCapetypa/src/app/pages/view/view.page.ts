@@ -40,9 +40,9 @@ export class ViewPage implements OnInit {
 
   }
 
-  getArticleAuthor(){
-     //Pega os usuarios para apresentar na View
-     this.http.get(environment.apiBaseURL + `/users/${this.article.author}`).subscribe(
+  getArticleAuthor() {
+    //Pega os usuarios para apresentar na View
+    this.http.get(environment.apiBaseURL + `/users/${this.article.ar_author.us_id}`).subscribe(
       (responseUser) => {
         console.log(responseUser)
         this.user = responseUser; // Atribua os dados ao array de artigos

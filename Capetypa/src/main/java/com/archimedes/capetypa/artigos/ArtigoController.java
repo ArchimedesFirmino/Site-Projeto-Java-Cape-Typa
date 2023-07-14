@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @CrossOrigin
 @RestController
 @RequestMapping("/articles")
@@ -31,7 +32,7 @@ public class ArtigoController {
 		return artigoRepository.findArticleById(id);
 	}
 
-	@GetMapping(path = "/views/{limit}")
+	@GetMapping(path = "/ar_views/{limit}")
 	public List<Artigo> getByViews(@PathVariable int limit) {
 		return artigoRepository.findMostViewedArticles(limit);
 	}
@@ -42,17 +43,7 @@ public class ArtigoController {
 		return "{\"status\": \"success\"}";
 	}
 
-	// Obtém os artigos do autor.
-	// Observe que a rota contém 3 parâmetros numéricos:
-	// {uid} → Id do autor do artigo
-	// {art} → Id do artigo que será excluído da listagem
-	// {lim} → Quantos artigos serão obtidos
-	// Exemplo de rota: http://domain.api/articles/author?uid=1&art=2&lim=5
-	@GetMapping(path = "/author")
-	public List<Artigo> getByAuthor(@RequestParam("uid") Long uid, @RequestParam("art") Long articleId,
-			@RequestParam("lim") int limit) {
-		return artigoRepository.findAllByAuthor(uid, articleId, limit);
-	}
+	
 
 	// Busca por uma palavra ou termo nos campos "title", "resume" e "content".
 	// As buascas são "case-insensitive". Por exemplo, para procurar por "Biscoito":
