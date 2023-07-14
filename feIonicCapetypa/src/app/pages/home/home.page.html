@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>Últimas noticias</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -15,12 +18,19 @@
       <ion-list>
         <!-- Loop assíncrono para obter cada item da coleção. -->
         <ion-item *ngFor="let article of articles">
-          <ion-img src="{{ article.ar_thumbnail }}" class="art-thumbail"></ion-img>
-          <ion-label>
+          <a routerLink="/view/{{ article.ar_id }}"><ion-card>
+              <img alt=" Thumbnail de {{ article.ar_title }}" src="{{ article.ar_thumbnail }}" />
+              <div style="float: right;">
+              <ion-card-header >
+                <ion-card-title>{{ article.ar_title }}</ion-card-title>
+                <ion-card-subtitle>{{ article.ar_resume }}</ion-card-subtitle>
+                <p>Postado por {{ article.ar_author.us_name }} em {{ article.ar_date | date:'dd/MM/yyyy'}}.</p>
+              </ion-card-header>
 
-            <h3><a routerLink="/view/{{ article.ar_id }}">{{ article.ar_title }}</a></h3>
-            <p>{{ article.ar_resume }}</p>
-          </ion-label>
+
+            </div>
+            </ion-card>
+          </a>
         </ion-item>
 
       </ion-list>

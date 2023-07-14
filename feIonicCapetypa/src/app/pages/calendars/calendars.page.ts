@@ -23,29 +23,12 @@ export class CalendarsPage implements OnInit {
       .subscribe((response) => {
         this.calendars = response;
         this.calendarsAut = this.calendars.ca_author;
-        this.getCalendarsAuthor();
+        //this.getCalendarsAuthor();
         console.log(this.calendars)
       })
 
   }
-  getCalendarsAuthor() {
-    //Pega os usuarios para apresentar na View
-    this.http.get(`${this.env.apiBaseURL}/users/${this.calendarsAut.us_id}`).subscribe(
-      (responseUser) => {
-        this.user = responseUser; // Atribua os dados ao array de artigos
-        console.log(this.user);
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
-  }
-
 }
-
-
-
-
 
 
 

@@ -10,8 +10,8 @@ import { environment } from 'src/environments/environment';
 export class LoginPage implements OnInit {
 
   public env = environment;
-
-  constructor(private auth: Auth = inject(Auth)) { }
+  private auth: Auth = inject(Auth)
+  constructor() { }
 
   ngOnInit() { }
 

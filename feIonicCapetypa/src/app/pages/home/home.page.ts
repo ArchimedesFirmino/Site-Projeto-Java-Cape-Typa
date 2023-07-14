@@ -27,24 +27,15 @@ export class HomePage implements OnInit {
     this.http.get(`${this.env.apiBaseURL}/articles`)
       .subscribe((response) => {
         this.articles = response;
-        console.log(response)
       },
-        (error) => {
-          console.log(error)
-        }
       )
   }
   getMostViewed(limit: number) {
-    console.log('foi');
     this.http.get(`${this.env.apiBaseURL}/articles/ar_views/${limit}`)
       .subscribe((response1) => {
-        console.log(response1);
         this.articlesView = response1;
 
       },
-        (error) => {
-          console.log(error);
-        }
       )
 
 

@@ -1,13 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Contate-nos</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Faça Contato Conosco!</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">contacts</ion-title>
+      <ion-title size="large">Faça Contato Conosco!</ion-title>
     </ion-toolbar>
   </ion-header>
+  <h2>Utilize os campos abaixo para mandar um contato para a coordenação!</h2>
+  <ion-list>
+    <ion-item>
+      <ion-input labelPlacement="floating" >
+        <div slot="label">Nome Completo: <ion-text color="danger">(Obrigatório)</ion-text></div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating">
+        <div slot="label">Email: <ion-text color="danger">(Obrigatório)</ion-text></div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating">
+        <div slot="label">Assunto: <ion-text color="danger">(Obrigatório)</ion-text></div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating">
+        <div slot="label">Mensagem: <ion-text color="danger">(Obrigatório)</ion-text></div>
+      </ion-input>
+    </ion-item>
+    <ion-button>Enviar</ion-button>
+  </ion-list>
 </ion-content>

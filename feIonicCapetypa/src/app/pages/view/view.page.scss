@@ -1,5 +1,56 @@
-
-
-.userAside{
-  float: right;
+/* Estilo para o container principal do artigo */
+.ion-padding {
+  display: flex;
 }
+
+/* Estilo para o título do artigo */
+h2{
+  background-color: grey;
+  padding: 10px;
+  color: #fff; /* Cor do texto */
+}
+
+/* Estilo para o resumo do artigo */
+small {
+  display: block; /* Exibe o resumo em uma nova linha */
+  margin-bottom: 10px; /* Espaçamento inferior */
+  font-style: italic; /* Texto em itálico */
+}
+
+/* Estilo para o conteúdo do artigo */
+div {
+  line-height: 1.6; /* Altura da linha */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilo para a seção do autor */
+.userAside {
+  background-color: grey;
+  float: right;
+  margin-top: 20px; /* Espaçamento superior */
+}
+
+/* Estilo para a foto do autor */
+.userAside ion-img {
+  width: 100%;
+  max-width: 400px; /* Defina um tamanho máximo para a thumbnail */
+  margin-bottom: 20px; /* Espaçamento inferior */
+}
+
+/* Estilo para o nome do autor */
+.userAside h3{
+  margin: 0; /* Remove as margens */
+}
+
+/* Estilo para a descrição do autor */
+.userAside h4 {
+  margin: 0; /* Remove as margens */
+  font-style: italic; /* Texto em itálico */
+}
+.thumbnail {
+  width: 100%;
+  max-width: 400px; /* Defina um tamanho máximo para a thumbnail */
+  margin-bottom: 20px; /* Espaçamento inferior */
+
+}
+

@@ -39,7 +39,7 @@ const routes: Routes = [
     title: `${environment.siteName} - Login/ Entrar`,
     loadChildren: () => import('./users/login/login.module').then(m => m.LoginPageModule),
     canActivate: [AuthGuard],
-    data: { authGuarPipe: toHome}
+    data: { authGuardPipe: toHome}
   },
   {
     path: 'logout',

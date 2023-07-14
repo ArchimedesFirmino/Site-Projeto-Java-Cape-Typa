@@ -22,19 +22,14 @@ export class ViewPage implements OnInit {
 
   ngOnInit() {
     this.articleId = this.activatedRoute.snapshot.paramMap.get('id') as string;
-    console.log(this.articleId)
-
     //Pega as Artigos para Apresentar na View.
     this.http.get(environment.apiBaseURL + `/articles/${this.articleId}`).subscribe(
       (response: any) => {
-        console.log(response)
         this.article = response[0]; // Atribua os dados ao array de artigos
         this.articleTitle = this.article.title;
+        console.log(this.article)
         this.getArticleAuthor();
       },
-      (error) => {
-        console.error(error);
-      }
     );
 
 
@@ -44,12 +39,8 @@ export class ViewPage implements OnInit {
     //Pega os usuarios para apresentar na View
     this.http.get(environment.apiBaseURL + `/users/${this.article.ar_author.us_id}`).subscribe(
       (responseUser) => {
-        console.log(responseUser)
         this.user = responseUser; // Atribua os dados ao array de artigos
       },
-      (error) => {
-        console.error(error);
-      }
     );
   }
 
