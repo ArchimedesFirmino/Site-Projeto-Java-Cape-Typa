@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { Auth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, User } from '@angular/fire/auth';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  public env = environment;
 
-  ngOnInit() {
+  constructor(private auth: Auth = inject(Auth)) { }
+
+  ngOnInit() { }
+
+  login() {
+    if (this.env.signInMethod == 'redirect')
+      signInWithRedirect(this.auth, new GoogleAuthProvider());
+    else
+      signInWithPopup(this.auth, new GoogleAuthProvider());
   }
 
 }

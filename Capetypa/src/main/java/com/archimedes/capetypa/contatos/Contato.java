@@ -13,81 +13,84 @@ public class Contato {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false)
-	private Long id;
+	private Long cnt_id;
 
 	@Column(length = 127)
-	private String date;
+	private String cnt_date;
 
 	@Column(length = 255)
-	private String name;
+	private String cnt_name;
 	
 	@Column(length = 255)
-	private String subject;
+	private String cnt_subject;
 	
 	@Column(length = 255)
-	private String email;
+	private String cnt_email;
 	
 	@Lob
 	@Column(columnDefinition = "TEXT")
-	private String message;
+	private String cnt_message;
 	
 	@Column(length = 15)
-	private String status;
+	private String cnt_status;
 
-	public Long getId() {
-		return id;
+	public Long getCnt_id() {
+		return cnt_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCnt_id(Long cnt_id) {
+		this.cnt_id = cnt_id;
 	}
 
-	public String getDate() {
-		return date;
+	public String getCnt_date() {
+		return cnt_date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setCnt_date(String cnt_date) {
+		this.cnt_date = cnt_date;
 	}
 
-	public String getName() {
-		return name;
+	public String getCnt_name() {
+		return cnt_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCnt_name(String cnt_name) {
+		this.cnt_name = cnt_name;
 	}
 
-	public String getSubject() {
-		return subject;
+	public String getCnt_subject() {
+		return cnt_subject;
 	}
 
-	public void setSubject(String subject) {
-		this.subject = subject;
+	public void setCnt_subject(String cnt_subject) {
+		this.cnt_subject = cnt_subject;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCnt_email() {
+		return cnt_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCnt_email(String cnt_email) {
+		this.cnt_email = cnt_email;
 	}
 
-	public String getMessage() {
-		return message;
+	public String getCnt_message() {
+		return cnt_message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	public void setCnt_message(String cnt_message) {
+		this.cnt_message = cnt_message;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getCnt_status() {
+		return cnt_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
-	} 
+	public void setCnt_status(String cnt_status) {
+		this.cnt_status = cnt_status;
+	}
 
+	
+	
+	
 }

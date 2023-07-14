@@ -7,7 +7,23 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">calendars</ion-title>
+      <ion-title size="large">Página Inicial</ion-title>
     </ion-toolbar>
   </ion-header>
-</ion-content>
+  <main>
+    <article *ngIf="calendars">
+      <ion-list>
+        <!-- Loop assíncrono para obter cada item da coleção. -->
+        <ion-item *ngFor="let calendar of calendars">
+          <ion-label>
+
+            <h3>{{ calendar.title }}</h3>
+            <p>{{ calendar.institute }}</p>
+            <p>{{ calendar.content }}</p>
+
+            <span style="float: right;">Feito por user.name </span>
+          </ion-label>
+        </ion-item>
+
+      </ion-list>
+    </article>

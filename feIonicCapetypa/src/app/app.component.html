@@ -6,7 +6,7 @@
           <a href="/home"><ion-img src="assets/icon/logotipo.png" alt="Logotipo Çape-Typa"></ion-img></a>
           <ion-list-header>{{ env.siteName }}</ion-list-header>
 
-          
+
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
               routerLinkActive="selected">
@@ -35,11 +35,9 @@
           </ion-menu-toggle>
 
         </ion-list>
-
+<ion-label style="display: block;" class="ion-padding ion-text-center"><small>&copy; 2023 Eu Mesmo!</small></ion-label>
 
       </ion-content>
-
-      <ion-label class="ion-padding ion-text-center"><small>&copy; 2023 Eu Mesmo!</small></ion-label>
 
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

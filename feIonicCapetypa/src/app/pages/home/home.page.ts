@@ -20,34 +20,35 @@ export class HomePage implements OnInit {
     this.getMostViewed(5);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
-    getAllArticles(){
-      this.http.get(`${this.env.apiBaseURL}/articles`)
-        .subscribe((response) => {
-          console.log(this.articles);
-          this.articles = response;
-        },
-          (error) => {
-            console.log(error)
-          }
-        )
-    }
-    getMostViewed(limit: number) {
-      console.log('foi');
-      this.http.get(`${this.env.apiBaseURL}/articles/views/${limit}`)
-        .subscribe((response1) => {
-          console.log(response1);
-          this.articlesView = response1;
+  getAllArticles() {
+    this.http.get(`${this.env.apiBaseURL}/articles`)
+      .subscribe((response) => {
 
-        },
-          (error) => {
-            console.log(error);
-          }
-        )
+        this.articles = response;
+        console.log(response)
+      },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+  getMostViewed(limit: number) {
+    console.log('foi');
+    this.http.get(`${this.env.apiBaseURL}/articles/ar_views/${limit}`)
+      .subscribe((response1) => {
+        console.log(response1);
+        this.articlesView = response1;
+
+      },
+        (error) => {
+          console.log(error);
+        }
+      )
 
 
-    }
+  }
 
 }

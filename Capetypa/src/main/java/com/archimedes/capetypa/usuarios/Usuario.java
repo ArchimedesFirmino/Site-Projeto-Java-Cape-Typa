@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 
 @Entity
 public class Usuario {
@@ -13,102 +13,103 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
-	private Long id;
+	private Long us_id;
 
 	@Column(length = 127)
-	private String name;
+	private String us_name;
 
 	@Column(length = 255)
-	private String description;
+	private String us_description;
 
 	@Column(length = 127)
-	private String birthday;
+	private String us_birthday;
 
 	@Column(length = 255)
-	private String email;
+	private String us_email;
 
 	@Column(length = 63)
-	private String password;
+	private String us_password;
 
 	@Column(length = 255)
-	private String img;
+	private String us_photo;
 
 	@Column(length = 15)
-	private String status;
+	private String us_status;
 
 	@Column(length = 15)
-	private String type;
+	private String us_type;
 
-	public Long getId() {
-		return id;
+	public Long getUs_id() {
+		return us_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setUs_id(Long us_id) {
+		this.us_id = us_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUs_name() {
+		return us_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUs_name(String us_name) {
+		this.us_name = us_name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getUs_description() {
+		return us_description;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setUs_description(String us_description) {
+		this.us_description = us_description;
 	}
 
-	public String getBirthday() {
-		return birthday;
+	public String getUs_birthday() {
+		return us_birthday;
 	}
 
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setUs_birthday(String us_birthday) {
+		this.us_birthday = us_birthday;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUs_email() {
+		return us_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUs_email(String us_email) {
+		this.us_email = us_email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUs_password() {
+		return us_password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUs_password(String us_password) {
+		this.us_password = us_password;
 	}
 
-	public String getImg() {
-		return img;
+	public String getUs_photo() {
+		return us_photo;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setUs_photo(String us_photo) {
+		this.us_photo = us_photo;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getUs_status() {
+		return us_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setUs_status(String us_status) {
+		this.us_status = us_status;
 	}
 
-	public String getType() {
-		return type;
+	public String getUs_type() {
+		return us_type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setUs_type(String us_type) {
+		this.us_type = us_type;
 	}
+
 
 }

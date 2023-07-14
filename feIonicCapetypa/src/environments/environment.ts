@@ -14,7 +14,8 @@ export const environment = {
   production: false,
   siteName: 'Çape-Typa',
   apiBaseURL: 'http://localhost:8080',
-  authMethod: 'redirect'
+  signInMethod: 'redirect',
+  policiesDate: '2023-07-07'
 };
 
 /*

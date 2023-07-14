@@ -1,11 +1,15 @@
 package com.archimedes.capetypa.artigos;
 
+import com.archimedes.capetypa.usuarios.Usuario;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Artigo {
@@ -13,103 +17,104 @@ public class Artigo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
-	private Long id;
+	private Long ar_id;
 
 	@Column(length = 127)
-	private String date;
+	private String ar_date;
 
-	@Column(nullable = false)
-	private Long author;
+	@ManyToOne
+	@JoinColumn(name = "ar_author")
+	private Usuario ar_author;
 
 	@Column(length = 127)
-	private String title;
+	private String ar_title;
 
 	@Column(length = 15)
-	private String status;
+	private String ar_status;
 
 	@Column(length = 255)
-	private String thumbnail;
+	private String ar_thumbnail;
 
 	@Column(length = 127)
-	private String resume;
+	private String ar_resume;
 
 	@Column
-	private Long views;
+	private Long ar_views;
 
 	@Lob
 	@Column(columnDefinition = "TEXT")
-	private String content;
+	private String ar_content;
 
-	public Long getId() {
-		return id;
+	public Long getAr_id() {
+		return ar_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAr_id(Long ar_id) {
+		this.ar_id = ar_id;
 	}
 
-	public String getDate() {
-		return date;
+	public String getAr_date() {
+		return ar_date;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setAr_date(String ar_date) {
+		this.ar_date = ar_date;
 	}
 
-	public Long getAuthor() {
-		return author;
+	public Usuario getAr_author() {
+		return ar_author;
 	}
 
-	public void setAuthor(Long author) {
-		this.author = author;
+	public void setAr_author(Usuario ar_author) {
+		this.ar_author = ar_author;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getAr_title() {
+		return ar_title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setAr_title(String ar_title) {
+		this.ar_title = ar_title;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getAr_status() {
+		return ar_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setAr_status(String ar_status) {
+		this.ar_status = ar_status;
 	}
 
-	public String getThumbnail() {
-		return thumbnail;
+	public String getAr_thumbnail() {
+		return ar_thumbnail;
 	}
 
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
+	public void setAr_thumbnail(String ar_thumbnail) {
+		this.ar_thumbnail = ar_thumbnail;
 	}
 
-	public String getResume() {
-		return resume;
+	public String getAr_resume() {
+		return ar_resume;
 	}
 
-	public void setResume(String resume) {
-		this.resume = resume;
+	public void setAr_resume(String ar_resume) {
+		this.ar_resume = ar_resume;
 	}
 
-	public String getContent() {
-		return content;
+	public Long getAr_views() {
+		return ar_views;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setAr_views(Long ar_views) {
+		this.ar_views = ar_views;
 	}
 
-	public Long getViews() {
-		return views;
+	public String getAr_content() {
+		return ar_content;
 	}
 
-	public void setViews(Long views) {
-		this.views = views;
+	public void setAr_content(String ar_content) {
+		this.ar_content = ar_content;
 	}
 
 }

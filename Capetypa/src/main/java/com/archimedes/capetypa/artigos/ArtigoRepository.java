@@ -19,32 +19,32 @@ public interface ArtigoRepository extends JpaRepository<Artigo, Long> {
 
 	// Obtém os artigos mais visualizados decrescente.
 	@Query(value = "SELECT * FROM artigo WHERE " + DEFAULTPARAMS
-			+ " ORDER BY views DESC LIMIT :limit", nativeQuery = true)
+			+ " ORDER BY ar_views DESC LIMIT :limit", nativeQuery = true)
 	List<Artigo> findMostViewedArticles(@Param("limit") int limit);
 
 	// Obtém um artigo pelo Id.
-	@Query(value = "SELECT * FROM artigo WHERE " + DEFAULTPARAMS + " AND id = :id", nativeQuery = true)
+	@Query(value = "SELECT * FROM artigo WHERE " + DEFAULTPARAMS + " AND ar_id = :id", nativeQuery = true)
 	List<Artigo> findArticleById(@Param("id") Long id);
 
 	// Obtém os artigos de um autor, exceto o artigo com "id", em ordem aleatória.
 	@Query(value = "SELECT * FROM artigo WHERE " + DEFAULTPARAMS
-			+ " AND author = :uid AND id != :articleId ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+			+ " AND ar_author = :uid AND id != :ar_Id ORDER BY RAND() LIMIT :limit", nativeQuery = true)
 	List<Artigo> findAllByAuthor(@Param("uid") Long uid, @Param("articleId") Long articleId,
 			@Param("limit") int limit);
 
 	// Verifica se um artigo existe ou é ativo.
 	@Query(value = "SELECT CASE WHEN COUNT(id) > 0 THEN true ELSE false END FROM artigo WHERE " + DEFAULTPARAMS
-			+ " AND id = :id", nativeQuery = true)
+			+ " AND ar_id = :id", nativeQuery = true)
 	boolean existsById(@Param("id") Long id);
 
 	// Atualiza a quantidade de views do artigo pelo Id.
 	@Modifying
-	@Query(value = "UPDATE artigos SET views = views + 1 WHERE " + DEFAULTPARAMS + " AND id = :id", nativeQuery = true)
+	@Query(value = "UPDATE artigos SET ar_views = ar_views + 1 WHERE " + DEFAULTPARAMS + " AND ar_id = :id", nativeQuery = true)
 	void updateViews(@Param("id") Long id);
 
 	// Busca por uma palavra ou termo nos campos "title", "resume" e "content".
 	@Query(value = "SELECT * FROM artigo WHERE " + DEFAULTPARAMS
-			+ " AND UPPER(title) LIKE UPPER(CONCAT('%', :query, '%')) OR UPPER(resume) LIKE UPPER(CONCAT('%', :query, '%')) OR UPPER(content) LIKE UPPER(CONCAT('%', :query, '%'))", nativeQuery = true)
+			+ " AND UPPER(ar_title) LIKE UPPER(CONCAT('%', :query, '%')) OR UPPER(ar_resume) LIKE UPPER(CONCAT('%', :query, '%')) OR UPPER(ar_content) LIKE UPPER(CONCAT('%', :query, '%'))", nativeQuery = true)
 	List<Artigo> findByWord(@Param("query") String query);
 }
 
