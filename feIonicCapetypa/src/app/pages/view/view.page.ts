@@ -2,8 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { Auth, authState, User } from '@angular/fire/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view',
@@ -16,11 +20,34 @@ export class ViewPage implements OnInit {
   public article: any;
   public user: any;
   public articleTitle!: string;
+  public comments: any;
+  success: boolean = false;
+  commentForm!: FormGroup;
+  comment!: any;
+  firstName: String = "";
+  private authState = authState(this.auth);
+  private authStateSubscription = new Subscription;
+  validationMessages: any = {
+    fb_name: {
+      required: 'O nome é obrigatório.',
+      minlength: 'O nome está muito curto.'
+    },
+    cm_comment: {
+      required: 'A mensagem é obrigatória.',
+      minlength: 'A mensagem está muito curta.'
+    }
+  }
+  formErrors: any = {
+    fb_name: '',
+    cm_comment: ''
+  }
 
-
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private auth: Auth = inject(Auth), private formBuilder: FormBuilder) {
+   }
 
   ngOnInit() {
+    this.createForm();
+    this.success = false;
     this.articleId = this.activatedRoute.snapshot.paramMap.get('id') as string;
     //Pega as Artigos para Apresentar na View.
     this.http.get(environment.apiBaseURL + `/articles/${this.articleId}`).subscribe(
@@ -30,8 +57,16 @@ export class ViewPage implements OnInit {
         console.log(this.article)
         this.getArticleAuthor();
       },
-    );
 
+    );
+    
+    this.authStateSubscription = this.authState.subscribe(
+      (userData: User | null) => {
+        if (userData) {
+          this.commentForm.controls['fb_name'].setValue(userData.displayName);
+        }
+      }
+    );
 
   }
 
@@ -44,5 +79,59 @@ export class ViewPage implements OnInit {
     );
   }
 
+  getArticleComments() {
+    this.http.get(environment.apiBaseURL + `/comments/${this.article.ar_id}`).subscribe(
+      (responseComment) => {
+        this.comments = responseComment;
+      }
+    )
+  }
+  createForm() {
+    this.commentForm = this.formBuilder.group({
+      fb_name: ['', [Validators.required, Validators.minLength(3)]],
+      cm_comment: ['', [Validators.required, Validators.minLength(5)]]
+    });
+  }
+  updateValidationMessages() {
+    for (const field in this.formErrors) {
+      if (Object.prototype.hasOwnProperty.call(this.formErrors, field)) {
+        this.formErrors[field] = '';
+        const control = this.commentForm.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            if (Object.prototype.hasOwnProperty.call(control.errors, key)) {
+              this.formErrors[field] += messages[key] + ' ';
+            }
+          }
+        }
+      }
+    }
+  }
+
+  sendComment() {
+    if (this.commentForm.invalid) return;
+    this.comment = this.commentForm.value;
+    this.comment.cm_date = new Date();
+    this.comment.cm_status = 'on';
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    this.http.post(environment.apiBaseURL + '/comments/' + this.comments.cm_article.ar_id , this.comment, httpOptions).subscribe((response) => {
+      console.log('Response do contato enviado:', response);
+      this.firstName = this.comment.fb_name.split(' ')[0];
+      this.success = true;
+    },
+      (error) => {
+        alert('Oooops!\n' + error.message);
+      }
+    );
+    this.commentForm.reset();
+  }
+
+  reset() {
+    this.success = false;
+    return false;
+  }
 
 }

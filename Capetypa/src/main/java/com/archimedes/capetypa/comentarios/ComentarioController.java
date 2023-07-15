@@ -45,7 +45,7 @@ public class ComentarioController {
 	}
 
 	@PostMapping
-	public Comentario postComment(@RequestBody Comentario comment) {
+	public Comentario saveComment(@RequestBody Comentario comment) {
 		return repository.save(comment);
 	}
 }

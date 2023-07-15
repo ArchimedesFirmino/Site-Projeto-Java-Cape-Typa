@@ -17,18 +17,18 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 
 	// Lista os comentários mais recentes.
 	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS
-			+ " ORDER BY date DESC LIMIT :limit  ", nativeQuery = true)
+			+ " ORDER BY cm_date DESC LIMIT :limit  ", nativeQuery = true)
 	List<Comentario> findLastComments(@Param("limit") int limit);
 
 	// Pesquisa por comentários pelo autor, artigo e comentário.
 	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS
-			+ " AND uid = :uid AND article = :art AND comment = :txt", nativeQuery = true)
+			+ " AND fb_uid = :uid AND ar_id = :art AND cm_comment = :txt", nativeQuery = true)
 	List<Comentario> findCommentsByAuthorArticleAndContent(@Param("uid") String uid, @Param("art") Long art,
 			@Param("txt") String txt);
 
 	// Salva um novo comentário.
 	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS
-			+ " AND article = :articleId ORDER BY date DESC", nativeQuery = true)
+			+ " AND ar_id = :articleId ORDER BY cm_date DESC", nativeQuery = true)
 	List<Comentario> findAllCommentByArticle(@Param("articleId") Long articleId);
 
 }
