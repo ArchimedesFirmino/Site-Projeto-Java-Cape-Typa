@@ -4,7 +4,6 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title class="ion-text-center">{{ articleTitle }}</ion-title>
-    <ion-icon name="document-text-outline" size="large" class="ion-margin" slot="end"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -12,16 +11,15 @@
   <div *ngIf="article" class="ion-text-start">
 
     <h2 alt="titulo"><strong>{{article.ar_title}}</strong></h2>
-    <div style="float: right;">
       <h4>Postado em {{article.ar_date | date:'dd/MM/yyyy'}}</h4>
       <h4>Visualizações: {{article.ar_views}}</h4>
-    </div>
     <ion-img src=" {{ article.ar_thumbnail }}" class="thumbnail"></ion-img>
     <div [innerHTML]="article.ar_content"></div>
 
 
   </div>
   <div *ngIf="user" class="userAside">
+    <p>Postado por</p>
     <ion-img src="{{ user.us_photo }}"></ion-img>
     <h3 alt="nome do autor"> {{ user.us_name }}</h3>
     <h4>{{ user.us_description }}</h4>

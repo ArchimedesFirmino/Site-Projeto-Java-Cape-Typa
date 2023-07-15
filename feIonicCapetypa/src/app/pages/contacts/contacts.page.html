@@ -13,28 +13,46 @@
       <ion-title size="large">Faça Contato Conosco!</ion-title>
     </ion-toolbar>
   </ion-header>
-  <h2>Utilize os campos abaixo para mandar um contato para a coordenação!</h2>
-  <ion-list>
-    <ion-item>
-      <ion-input labelPlacement="floating" >
-        <div slot="label">Nome Completo: <ion-text color="danger">(Obrigatório)</ion-text></div>
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input labelPlacement="floating">
-        <div slot="label">Email: <ion-text color="danger">(Obrigatório)</ion-text></div>
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input labelPlacement="floating">
-        <div slot="label">Assunto: <ion-text color="danger">(Obrigatório)</ion-text></div>
-      </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input labelPlacement="floating">
-        <div slot="label">Mensagem: <ion-text color="danger">(Obrigatório)</ion-text></div>
-      </ion-input>
-    </ion-item>
-    <ion-button>Enviar</ion-button>
-  </ion-list>
+
+
+  <form *ngIf="!success" [formGroup]="contactForm" (ngSubmit)="sendContact()"><ion-list>
+      <h2 style="text-align: center;">Utilize os campos abaixo para mandar um contato para a coordenação!</h2>
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="cnt_name" required minlength="3">
+          <div slot="label">Nome Completo:</div>
+        </ion-input>
+        <small class="error-message" *ngIf="formErrors.name">{{ formErrors.name }}</small>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="cnt_email" required email>
+          <div slot="label">Email: </div>
+        </ion-input>
+        <small class="error-message" *ngIf="formErrors.email">{{ formErrors.email }}</small>
+      </ion-item>
+      <ion-item>
+        <ion-input labelPlacement="floating" formControlName="cnt_subject" required minlength="3">
+          <div slot="label">Assunto: </div>
+        </ion-input>
+        <small class="error-message" *ngIf="formErrors.subject">{{ formErrors.subject }}</small>
+      </ion-item>
+      <ion-item>
+        <ion-textarea labelPlacement="floating" formControlName="cnt_message" required minlength="5" [autoGrow]="true">
+          <div slot="label">Mensagem: </div>
+        </ion-textarea>
+        <small class="error-message" *ngIf="formErrors.message">{{ formErrors.message }}</small>
+      </ion-item>
+      <ion-button type="submit" [disabled]="contactForm.invalid">Enviar</ion-button>
+    </ion-list></form>
+  <div *ngIf="success">
+
+    <h3>Olá {{firstName}}!</h3>
+    <p>Seu contato foi enviado.</p>
+    <p><em>Obrigado...</em></p>
+    <p class="ion-text-center">
+      <ion-button (click)="reset()">Enviar outro contato</ion-button>
+    </p>
+
+  </div>
+
+
 </ion-content>

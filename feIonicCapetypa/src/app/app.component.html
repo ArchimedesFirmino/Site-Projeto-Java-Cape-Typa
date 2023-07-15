@@ -5,7 +5,7 @@
       <ion-content>
         <ion-list id="inbox-list">
           <a href="/home"><ion-img src="assets/icon/logotipo.png" alt="Logotipo Çape-Typa"></ion-img></a>
-          <ion-list-header>{{ env.siteName }}</ion-list-header>
+          <ion-searchbar (ionChange)="searchEvent($event)" placeholder="Procurar" class="ion-margin-bottom"></ion-searchbar>
 
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

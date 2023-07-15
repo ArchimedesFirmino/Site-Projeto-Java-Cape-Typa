@@ -63,7 +63,7 @@ const routes: Routes = [
     title: `${environment.siteName} - Erro 404`,
     loadChildren: () => import('./pages/e404/e404.module').then(m => m.E404PageModule)
   }, {
-    path: 'search',
+    path: 'search/:query',
     title: `${environment.siteName} - Resultado`,
     loadChildren: () => import('./pages/search/search.module').then(m => m.SearchPageModule)
   },

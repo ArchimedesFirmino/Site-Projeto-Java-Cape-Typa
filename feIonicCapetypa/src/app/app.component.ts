@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Auth, User, authState } from '@angular/fire/auth';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent {
     icon: 'log-in',
     avatar: ''
   }
-  constructor() {
+  constructor(private router: Router) {
     this.authStateSubscription = this.authState.subscribe((aUser: User | null) => {
       if (aUser !== null) {
         this.appUser = {
@@ -46,5 +47,9 @@ export class AppComponent {
     // when manually subscribing to an observable remember to unsubscribe in ngOnDestroy
     this.authStateSubscription.unsubscribe();
   }
-
+  searchEvent(event: any) {
+    let query = event.target.value.trim();
+    if (query !== '') this.router.navigate(['/search/' + query]);
+    return false;
+  }
 }
