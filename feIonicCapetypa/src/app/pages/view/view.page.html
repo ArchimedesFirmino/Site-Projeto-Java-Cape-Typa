@@ -49,40 +49,20 @@
       </ion-item>
     </ion-card>
   </ion-card>
-  <!-- Formulário para adicionar comentário -->
-  <ion-item *ngIf="appUser.logged">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Deixe um Comentário</ion-card-title>
-      </ion-card-header>
-
+  <ion-content>
+    <div *ngIf="isUserLoggedIn">
+      <!-- Formulário de Comentário -->
       <form *ngIf="!success" [formGroup]="commentForm" (ngSubmit)="sendComment()"><ion-list>
-          <ion-item style=" display: none;">
-            <ion-input labelPlacement="floating" formControlName="fb_name" required minlength="3">
-              <div slot="label">Nome:</div>
-            </ion-input>
-            <small class="error-message" *ngIf="formErrors.name">{{ formErrors.name }}</small>
-          </ion-item>
-          <ion-item>
-            <ion-textarea labelPlacement="floating" formControlName="cm_comment" required minlength="5"
-              [autoGrow]="true">
-              <div slot="label">Comentário: </div>
-            </ion-textarea>
-            <small class="error-message" *ngIf="formErrors.message">{{ formErrors.message }}</small>
-          </ion-item>
+          <ion-textarea labelPlacement="floating" formControlName="cm_comment" required minlength="2" [autoGrow]="true">
+            <div slot="label">Comentário: </div>
+          </ion-textarea>
+          <small class="error-message" *ngIf="formErrors.message">{{ formErrors.message }}</small>
           <ion-button type="submit" [disabled]="commentForm.invalid">Enviar</ion-button>
-        </ion-list>
-      </form>
+        </ion-list></form>
       <div *ngIf="success">
-
-        <h3>Olá {{firstName}}!</h3>
-        <p>Seu comentário foi enviado.</p>
-        <p><em>Obrigado...</em></p>
-        <p class="ion-text-center">
-          <ion-button (click)="reset()">Fazer outro comentário</ion-button>
-        </p>
-
+        <p>Comentário enviado!</p>
       </div>
-    </ion-card>
-  </ion-item>
-</ion-content>
+      <div *ngIf="!isUserLoggedIn">
+        <p>Você precisa estar logado para comentar.</p>
+        <!-- Coloque aqui um botão para redirecionar o usuário para a página de login -->
+      </div>

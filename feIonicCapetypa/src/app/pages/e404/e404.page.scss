@@ -1,5 +1,47 @@
-.content{
+/* app.page.scss */
+ion-content {
+  --ion-background-color: transparent; /* Para tornar o conteúdo transparente */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('../../../assets/erro404.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
+  z-index: -1; /* Certifique-se de que o elemento fique atrás do conteúdo */
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #ffffff;
+  color: #444;
+  line-height: 1.6;
+  text-align: center;
+}
+
+h1 {
+  font-size: 8rem;
+  margin-top: 3rem;
+  padding: 0.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover{
+  background-color: rgba(0, 0, 0, 0.3);
 }

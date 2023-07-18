@@ -12,6 +12,6 @@ import jakarta.transaction.Transactional;
 @Transactional
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-	@Query(value = "SELECT * FROM social WHERE status = 'on' AND uid = :uid ORDER BY name", nativeQuery = true)
+	@Query(value = "SELECT * FROM usuario WHERE us_status = 'on' AND us_id = :uid ORDER BY us_name", nativeQuery = true)
 	List<Usuario> findByUser(@Param("uid") Long uid);
 }

@@ -25,14 +25,15 @@ public class ComentarioController {
 		return repository.findLastComments(limit);
 	}
 
-	@GetMapping(path = "/{articleId}")
-	public List<Comentario> getAll(@PathVariable Long articleId) {
-		return repository.findAllCommentByArticle(articleId);
+	@GetMapping(path = "/{cm_id}")
+	public List<Comentario> getCommentById(@PathVariable Long id) {
+		return repository.findCommentById(id);
 	}
 	@GetMapping
 	public List<Comentario> getAllComments() {
 		return repository.findAllComments();
 	}
+	
 	// Busca por um comentário específico.
 	// Exemplo:
 	// GET → http://domínio.api/comments/find?uid=Q1W2E3R4T5Y6U7&art=2&txt=Comentário do usuário

@@ -1,13 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { PreloadAllModules, Router, RouterModule, Routes } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
-import { Auth, authState, User } from '@angular/fire/auth';
+import { Auth, authState, User, } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-view',
@@ -15,101 +12,85 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrls: ['./view.page.scss'],
 })
 export class ViewPage implements OnInit {
+  // Variaveis de view (artigos)
   public articleId!: string;
-  private activatedRoute = inject(ActivatedRoute);
   public article: any;
-  public user: any;
   public articleTitle!: string;
+  // Variavel que armazena comentários
   public comments: any;
+  // Variaveis para formulário de comentários
   success: boolean = false;
   commentForm!: FormGroup;
   comment!: any;
-  firstName: String = "";
-  private authState = authState(this.auth);
-  private authStateSubscription = new Subscription;
-  validationMessages: any = {
-    fb_name: {
-      required: 'O nome é obrigatório.',
-      minlength: 'O nome está muito curto.'
-    },
-    cm_comment: {
-      required: 'A mensagem é obrigatória.',
-      minlength: 'A mensagem está muito curta.'
-    }
-  }
-  formErrors: any = {
-    fb_name: '',
-    cm_comment: ''
-  }
-  public appUser = {
-    logged: false,
-    title: 'Login / Entrar',
-    url: '/login',
-    icon: 'log-in',
-    avatar: ''
-  }
+  firstName: String = '';
+  // Conecta o Authentication
+  public user: any;
+  private authStateSubscription = new Subscription();
 
-  constructor(private http: HttpClient, private router: Router, private auth: Auth = inject(Auth), private formBuilder: FormBuilder) {
-    this.authStateSubscription = this.authState.subscribe((aUser: User | null) => {
-      if (aUser !== null) {
-        this.appUser = {
-          logged: true,
-          title: aUser.displayName + '',
-          url: '/profile',
-          icon: 'log-out',
-          avatar: aUser.photoURL + ''
-        }
-      }
-    })
-   }
+  validationMessages: any = { cm_comment: { required: "A mensagem é obrigatória" } }
+  formErrors: any = { cm_comment: '' }
+  constructor(
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private auth: Auth = inject(Auth),
+    private formBuilder: FormBuilder
+  ) { }
+  async isUserLoggedIn(): Promise<boolean> {
+    const user = await this.auth.currentUser;
+    return !!user;
+  }
 
   ngOnInit() {
     this.createForm();
     this.success = false;
+
     this.articleId = this.activatedRoute.snapshot.paramMap.get('id') as string;
+
     //Pega as Artigos para Apresentar na View.
     this.http.get(environment.apiBaseURL + `/articles/${this.articleId}`).subscribe(
       (response: any) => {
-        this.article = response[0]; // Atribua os dados ao array de artigos
+        this.article = response[0];
         this.articleTitle = this.article.title;
-        console.log(this.article)
+        console.log(this.article);
         this.getArticleAuthor();
-      },
-
+      }
     );
-    
-    this.authStateSubscription = this.authState.subscribe(
+    // Quando o formulário de comentário for editado, executa 'updateValidationMessages()'.
+    this.commentForm.valueChanges.subscribe(() => {
+      this.updateValidationMessages();
+    });
+    // Se usuário está logado, preenche os campos.
+    this.authStateSubscription = authState(this.auth).subscribe(
       (userData: User | null) => {
         if (userData) {
           this.commentForm.controls['fb_name'].setValue(userData.displayName);
         }
       }
     );
-
   }
-
   getArticleAuthor() {
     //Pega os usuarios para apresentar na View
     this.http.get(environment.apiBaseURL + `/users/${this.article.ar_author.us_id}`).subscribe(
       (responseUser) => {
-        this.user = responseUser; // Atribua os dados ao array de artigos
-      },
-    );
-  }
-
+        this.user = responseUser;
+      }
+    )
+  };
   getArticleComments() {
+    //Pega os comentários do artigo selecionado.
     this.http.get(environment.apiBaseURL + `/comments/${this.article.ar_id}`).subscribe(
       (responseComment) => {
         this.comments = responseComment;
       }
-    )
+    );
   }
+
   createForm() {
     this.commentForm = this.formBuilder.group({
-      fb_name: ['', [Validators.required, Validators.minLength(3)]],
-      cm_comment: ['', [Validators.required, Validators.minLength(5)]]
+      cm_comment: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
+  // Valida o preenchimento dos campos do formulário em tempo real.
   updateValidationMessages() {
     for (const field in this.formErrors) {
       if (Object.prototype.hasOwnProperty.call(this.formErrors, field)) {
@@ -135,11 +116,12 @@ export class ViewPage implements OnInit {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.http.post(environment.apiBaseURL + '/comments/', this.comment, httpOptions).subscribe((response) => {
-      console.log('Response do contato enviado:', response);
-      this.firstName = this.comment.fb_name.split(' ')[0];
-      this.success = true;
-    },
+    this.http.post(environment.apiBaseURL + '/comments/',this.comment, httpOptions).subscribe(
+      (response) => {
+        console.log('Response do contato enviado:', response);
+        this.firstName = this.comment.fb_name.split(' ')[0];
+        this.success = true;
+      },
       (error) => {
         alert('Oooops!\n' + error.message);
       }
@@ -149,7 +131,5 @@ export class ViewPage implements OnInit {
 
   reset() {
     this.success = false;
-    return false;
   }
-
 }

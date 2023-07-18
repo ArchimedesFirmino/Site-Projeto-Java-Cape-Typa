@@ -11,7 +11,6 @@ export class CalendarsPage implements OnInit {
 
 
   calendars: any;
-  user: any;
   env = environment;
   calendarsAut: any;
 
@@ -23,8 +22,6 @@ export class CalendarsPage implements OnInit {
       .subscribe((response) => {
         this.calendars = response;
         this.calendarsAut = this.calendars.ca_author;
-        //this.getCalendarsAuthor();
-        console.log(this.calendars)
       })
 
   }
