@@ -50,9 +50,9 @@ public class CalendarioController {
 	// {lim} → Quantos Calendarios serão obtidos
 	// Exemplo de rota: http://domain.api/articles/author?uid=1&art=2&lim=5
 	@GetMapping(path = "/ca_author")
-	public List<Calendario> getByAuthor(@RequestParam("uid") Long uid, @RequestParam("art") Long articleId,
+	public List<Calendario> getByAuthor(@RequestParam("uid") Long uid, @RequestParam("cal") Long calendarId,
 			@RequestParam("lim") int limit) {
-		return CalendarioRepository.findAllByAuthor(uid, articleId, limit);
+		return CalendarioRepository.findAllByAuthor(uid, calendarId, limit);
 	}
 
 	// Busca por uma palavra ou termo nos campos "title", "resume" e "content".

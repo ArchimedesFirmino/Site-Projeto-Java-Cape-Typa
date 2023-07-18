@@ -30,8 +30,8 @@ public interface CalendarioRepository extends JpaRepository<Calendario, Long> {
 
 	// Obtém os Calendarios de um autor, exceto o Calendario com "id", em ordem aleatória.
 	@Query(value = "SELECT * FROM Calendario WHERE " + DEFAULTPARAMS
-			+ " AND ca_author = :uid AND ca_id != :articleId ORDER BY RAND() LIMIT :limit", nativeQuery = true)
-	List<Calendario> findAllByAuthor(@Param("uid") Long uid, @Param("articleId") Long articleId,
+			+ " AND ca_author = :uid AND ca_id != :calendarId ORDER BY RAND() LIMIT :limit", nativeQuery = true)
+	List<Calendario> findAllByAuthor(@Param("uid") Long uid, @Param("calendarId") Long calendarId,
 			@Param("limit") int limit);
 
 	// Verifica se um Calendario existe ou é ativo.
