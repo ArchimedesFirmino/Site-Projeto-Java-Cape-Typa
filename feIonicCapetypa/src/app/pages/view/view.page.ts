@@ -41,6 +41,13 @@ export class ViewPage implements OnInit {
     fb_name: '',
     cm_comment: ''
   }
+  public appUser = {
+    logged: false,
+    title: 'Login / Entrar',
+    url: '/login',
+    icon: 'log-in',
+    avatar: ''
+  }
 
   constructor(private http: HttpClient, private router: Router, private auth: Auth = inject(Auth), private formBuilder: FormBuilder) {
    }
@@ -117,7 +124,7 @@ export class ViewPage implements OnInit {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    this.http.post(environment.apiBaseURL + '/comments/' + this.comments.cm_article.ar_id , this.comment, httpOptions).subscribe((response) => {
+    this.http.post(environment.apiBaseURL + '/comments/', this.comment, httpOptions).subscribe((response) => {
       console.log('Response do contato enviado:', response);
       this.firstName = this.comment.fb_name.split(' ')[0];
       this.success = true;

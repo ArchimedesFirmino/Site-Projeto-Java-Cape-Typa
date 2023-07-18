@@ -1,7 +1,6 @@
 package com.archimedes.capetypa.comentarios;
 
 import com.archimedes.capetypa.artigos.Artigo;
-import com.archimedes.capetypa.usuarios.Usuario;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

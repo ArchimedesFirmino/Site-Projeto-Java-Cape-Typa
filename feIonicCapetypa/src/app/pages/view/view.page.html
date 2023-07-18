@@ -11,13 +11,16 @@
   <!-- Conteúdo do artigo -->
 
   <ion-card *ngIf="article">
-    <ion-img> {{ article.ar_thumbnail }}</ion-img> <ion-card-header>
-      <ion-card-title>{{ article.ar_title}}</ion-card-title>
-      <ion-card-subtitle>{{ article.ar_author_us_name }}</ion-card-subtitle>
+    <ion-img class="thumbnail" alt=" Thumbnail do artigo {{ article.ar_title }}"
+      src="{{ article.ar_thumbnail }}"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{ article.ar_title }}</ion-card-title>
+      <ion-card-subtitle> Publicado por {{ article.ar_author.us_name }}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       {{ article.ar_content }}
+      <p>Publicado em {{ article.ar_date | date:'dd/MM/yyyy' }}</p>
     </ion-card-content>
   </ion-card>
 
@@ -27,8 +30,8 @@
       <ion-card-title>Comentários</ion-card-title>
     </ion-card-header>
 
-    <ion-item *ngIf="comments">
-      <ng-container *ngIf="comments.length > 0">
+    <ion-card>
+      <ion-item *ngIf="comments && comments.length > 0">
         <ion-list>
           <ion-item *ngFor="let comment of comments">
             <ion-avatar slot="start">
@@ -40,44 +43,46 @@
             </ion-label>
           </ion-item>
         </ion-list>
-      </ng-container>
-      <ion-item *ngIf="comments.length === 0">
+      </ion-item>
+      <ion-item *ngIf="!comments || comments.length === 0">
         <p>Nenhum comentário ainda. Faça o primeiro comentário!</p>
       </ion-item>
-    </ion-item>
+    </ion-card>
   </ion-card>
-
   <!-- Formulário para adicionar comentário -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Deixe um Comentário</ion-card-title>
-    </ion-card-header>
+  <ion-item *ngIf="!appUser.logged">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Deixe um Comentário</ion-card-title>
+      </ion-card-header>
 
-    <form *ngIf="!success" [formGroup]="commentForm" (ngSubmit)="sendComment()"><ion-list>
-        <ion-item>
-          <ion-input labelPlacement="floating" formControlName="fb_name" required minlength="3">
-            <div slot="label">Nome Completo:</div>
-          </ion-input>
-          <small class="error-message" *ngIf="formErrors.name">{{ formErrors.name }}</small>
-        </ion-item>
-        <ion-item>
-          <ion-textarea labelPlacement="floating" formControlName="cm_comment" required minlength="5" [autoGrow]="true">
-            <div slot="label">Comentário: </div>
-          </ion-textarea>
-          <small class="error-message" *ngIf="formErrors.message">{{ formErrors.message }}</small>
-        </ion-item>
-        <ion-button type="submit" [disabled]="commentForm.invalid">Enviar</ion-button>
-      </ion-list>
-    </form>
-    <div *ngIf="success">
+      <form *ngIf="!success" [formGroup]="commentForm" (ngSubmit)="sendComment()"><ion-list>
+          <ion-item>
+            <ion-input labelPlacement="floating" formControlName="fb_name" required minlength="3">
+              <div slot="label">Nome:</div>
+            </ion-input>
+            <small class="error-message" *ngIf="formErrors.name">{{ formErrors.name }}</small>
+          </ion-item>
+          <ion-item>
+            <ion-textarea labelPlacement="floating" formControlName="cm_comment" required minlength="5"
+              [autoGrow]="true">
+              <div slot="label">Comentário: </div>
+            </ion-textarea>
+            <small class="error-message" *ngIf="formErrors.message">{{ formErrors.message }}</small>
+          </ion-item>
+          <ion-button type="submit" [disabled]="commentForm.invalid">Enviar</ion-button>
+        </ion-list>
+      </form>
+      <div *ngIf="success">
 
-      <h3>Olá {{firstName}}!</h3>
-      <p>Seu comentário foi enviado.</p>
-      <p><em>Obrigado...</em></p>
-      <p class="ion-text-center">
-        <ion-button (click)="reset()">Fazer outro comentário</ion-button>
-      </p>
-  
-    </div>
-  </ion-card>
+        <h3>Olá {{firstName}}!</h3>
+        <p>Seu comentário foi enviado.</p>
+        <p><em>Obrigado...</em></p>
+        <p class="ion-text-center">
+          <ion-button (click)="reset()">Fazer outro comentário</ion-button>
+        </p>
+
+      </div>
+    </ion-card>
+  </ion-item>
 </ion-content>
