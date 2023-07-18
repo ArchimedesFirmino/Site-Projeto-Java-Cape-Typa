@@ -45,19 +45,19 @@
         </ion-list>
       </ion-item>
       <ion-item *ngIf="!comments || comments.length === 0">
-        <p>Nenhum comentário ainda. Faça o primeiro comentário!</p>
+        <p>Nenhum comentário ainda. Logue-se e faça o primeiro comentário!</p>
       </ion-item>
     </ion-card>
   </ion-card>
   <!-- Formulário para adicionar comentário -->
-  <ion-item *ngIf="!appUser.logged">
+  <ion-item *ngIf="appUser.logged">
     <ion-card>
       <ion-card-header>
         <ion-card-title>Deixe um Comentário</ion-card-title>
       </ion-card-header>
 
       <form *ngIf="!success" [formGroup]="commentForm" (ngSubmit)="sendComment()"><ion-list>
-          <ion-item>
+          <ion-item style=" display: none;">
             <ion-input labelPlacement="floating" formControlName="fb_name" required minlength="3">
               <div slot="label">Nome:</div>
             </ion-input>

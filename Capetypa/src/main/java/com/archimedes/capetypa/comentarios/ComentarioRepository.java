@@ -22,7 +22,7 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 
 	// Pesquisa por comentários pelo autor, artigo e comentário.
 	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS
-			+ " AND fb_uid = :uid AND ar_id = :art AND cm_comment = :txt", nativeQuery = true)
+			+ " AND fb_uid = :uid AND cm_article.ar_id = :art AND cm_comment = :txt", nativeQuery = true)
 	List<Comentario> findCommentsByAuthorArticleAndContent(@Param("uid") String uid, @Param("art") Long art,
 			@Param("txt") String txt);
 
@@ -30,5 +30,8 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
 	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS
 			+ " AND ar_id = :articleId ORDER BY cm_date DESC", nativeQuery = true)
 	List<Comentario> findAllCommentByArticle(@Param("articleId") Long articleId);
+	
+	@Query(value = "SELECT * FROM comments WHERE " + DEFAULTPARAMS, nativeQuery = true)
+	List<Comentario> findAllComments();
 
 }

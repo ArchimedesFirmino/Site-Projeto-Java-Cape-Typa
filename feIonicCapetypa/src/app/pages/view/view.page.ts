@@ -50,6 +50,17 @@ export class ViewPage implements OnInit {
   }
 
   constructor(private http: HttpClient, private router: Router, private auth: Auth = inject(Auth), private formBuilder: FormBuilder) {
+    this.authStateSubscription = this.authState.subscribe((aUser: User | null) => {
+      if (aUser !== null) {
+        this.appUser = {
+          logged: true,
+          title: aUser.displayName + '',
+          url: '/profile',
+          icon: 'log-out',
+          avatar: aUser.photoURL + ''
+        }
+      }
+    })
    }
 
   ngOnInit() {
